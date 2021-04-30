@@ -73,7 +73,7 @@ pub fn height_to_flags(height: u32) -> u32 {
     if height > 170059 {
         flag |= VERIFY_P2SH;
     }
-    if height > 363724 {
+    if height > 363725 {
         flag |= VERIFY_DERSIG;
     }
     if height > 388381 {
