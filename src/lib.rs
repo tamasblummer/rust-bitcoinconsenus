@@ -70,19 +70,21 @@ extern "C" {
 pub fn height_to_flags(height: u32) -> u32 {
 
     let mut flag = VERIFY_NONE;
-    if height > 170059 {
+    if height >= 170061 {
+        // bip16 enforce after timestamp > 1333238400 however latest tx violating is
+        // 6a26d2ecb67f27d1fa5524763b49029d7106e91e3cc05743073461a719776192 in block 170060
         flag |= VERIFY_P2SH;
     }
-    if height > 363724 {
+    if height >= 363725 {
         flag |= VERIFY_DERSIG;
     }
-    if height > 388381 {
+    if height >= 388381 {
         flag |= VERIFY_CHECKLOCKTIMEVERIFY;
     }
-    if height > 419328 {
+    if height >= 419328 {
         flag |= VERIFY_CHECKSEQUENCEVERIFY;
     }
-    if height > 481824 {
+    if height >= 481824 {
         flag |= VERIFY_NULLDUMMY | VERIFY_WITNESS
     }
     flag as u32
